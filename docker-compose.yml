@@ -12,8 +12,29 @@ services:
       VERSION: "1.21.1"
       NEOFORGE_VERSION: "21.1.251"
 
-      # Mods live in /opt/minecraft/data/mods on the host — rsync jars there yourself.
-      # The image will NOT auto-download or manage mods; it only installs vanilla + the NeoForge loader.
+      # Pins the server to the exact same mod files as the CurseForge client's "PoKéMoN_ Cobbled Stone Version" server
+      # instance (addonID:fileID pairs read from that instance's minecraftinstance.json). The image downloads these on
+      # startup and re-syncs whenever this list changes, so mod updates are a git commit, not a manual scp/docker cp.
+      # CF_API_KEY is a personal CurseForge API key (console.curseforge.com) — set it in Dokploy's environment/secrets
+      # UI, not committed here.
+      CF_API_KEY: "${CF_API_KEY}"
+      CURSEFORGE_FILES: |
+        1125437:8216091
+        591388:5962249
+        351264:8335665
+        676721:8763471
+        328085:7963363
+        419699:8492726
+        513688:8222737
+        1581408:8935459
+        936015:8944659
+        429235:7524151
+        570354:7078265
+        1091339:8943912
+        1510451:8057041
+        687131:8868914
+        1312371:8673825
+        790626:8774737
 
       MEMORY: "16G"       # leaves ~8G of the VM's 24G for Dokploy, the OS, and the MySQL/HeatWave workload
       USE_AIKAR_FLAGS: "true"
