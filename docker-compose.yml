@@ -35,6 +35,10 @@ services:
         687131:8868914
         1312371:8673825
         790626:8774737
+        398521:8765184
+        60028:7901588
+        961988:6179576
+        841262:7939973
 
       MEMORY: "16G"       # leaves ~8G of the VM's 24G for Dokploy, the OS, and the MySQL/HeatWave workload
       USE_AIKAR_FLAGS: "true"
